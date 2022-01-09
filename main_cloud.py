@@ -297,6 +297,7 @@ class Instacart:
                     link = link[i].get_attribute("href")
                 else:
                     continue
+
                 self.links.append(link)
                 # print("#{} - #{}".format(i + 1, len(products)))
             # print("We got #{} product(s). start fetching data".format(len(self.links)))
