@@ -295,6 +295,8 @@ class Instacart:
                 link = self.driver.find_elements("xpath", "//div[contains(@class,'ItemCardHoverProvider')]/div/div/a")
                 if len(link)>=i:
                     link = link[i].get_attribute("href")
+                else:
+                    continue
                 self.links.append(link)
                 # print("#{} - #{}".format(i + 1, len(products)))
             # print("We got #{} product(s). start fetching data".format(len(self.links)))
