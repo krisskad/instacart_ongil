@@ -18,15 +18,16 @@ from VirtualDispalyCodeAndTranslate import SmartDisplayWithTranslate
 
 
 PROXIES = [
-    "u6.p.webshare.io:10018",
-    "u6.p.webshare.io:10004"
     'u5.p.webshare.io:10004',
     'u6.p.webshare.io:10006',
     'u5.p.webshare.io:10018',
     'u5.p.webshare.io:10023',
     'u4.p.webshare.io:10032',
     'u5.p.webshare.io:10034',
-    'u5.p.webshare.io:10035'
+    'u5.p.webshare.io:10035',
+    'u6.p.webshare.io:10002',
+    'u6.p.webshare.io:10008',
+    'u6.p.webshare.io:10009'
 ]
 
 
