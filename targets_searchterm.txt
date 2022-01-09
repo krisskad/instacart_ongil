@@ -1,0 +1,31 @@
+Ale
+Beer
+Beer Pack 12
+Bud Light
+Bud Light Seltzer
+Budweiser
+Busch
+Busch Beer
+Busch Light
+Craft Beer
+IPA
+IPA Beer
+Lager
+Light Beer
+Michelob Ultra
+Natural Light
+Natural Light Beer
+Stella
+Stella Artois
+Cider
+Hard Cider
+Hard Seltzer
+Seltzer
+Spiked Seltzer
+https://www.instacart.com/store/publix/collections/spirits
+https://www.instacart.com/store/publix/collections/red-wine
+https://www.instacart.com/store/publix/collections/beef-cider
+https://www.instacart.com/store/publix/collections/white-wine
+https://www.instacart.com/store/publix/collections/hard-seltzers-coolers
+https://www.instacart.com/store/publix/collections/rose
+https://www.instacart.com/store/publix/collections/554-dessert-wine
