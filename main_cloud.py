@@ -45,19 +45,19 @@ class Instacart:
         # self.GetAddressesFromLocation()
         # self.Area = input("Select from above areas: ")
 
-        self.zip = "30305"
-        self.GetLocationsFromZip()
-        self.Location = "Atlanta, GA"
-        self.Address = "3180 Peachtree Road"
-        self.GetAddressesFromLocation()
-        self.Area = "3180 Peachtree Road"
+        # self.zip = "30305"
+        # self.GetLocationsFromZip()
+        # self.Location = "Atlanta, GA"
+        # self.Address = "3180 Peachtree Road"
+        # self.GetAddressesFromLocation()
+        # self.Area = "3180 Peachtree Road"
 
-        self.zip = "33612"
-        self.GetLocationsFromZip()
-        self.Location = "Tampa. FL"
-        self.Address = "2200 E Fowler Ave, Tampa, FL 33612, United States"
-        self.GetAddressesFromLocation()
-        self.Area = "2200 East Fowler Avenue"
+        # self.zip = "33612"
+        # self.GetLocationsFromZip()
+        # self.Location = "Tampa. FL"
+        # self.Address = "11465 Park Ave, Windermere, FL 34786, United States"
+        # self.GetAddressesFromLocation()
+        # self.Area = "E Fowler Av"
 
         self.zip = "28208"
         self.GetLocationsFromZip()
@@ -65,20 +65,20 @@ class Instacart:
         self.Address = "1201 W 4th Street Ext, Charlotte, NC 28208"
         self.GetAddressesFromLocation()
         self.Area = "1201 W 4th St"
-
-        self.zip = "33139"
-        self.GetLocationsFromZip()
-        self.Location = "Miami Beach, FL"
-        self.Address = "Ocean Dr, Miami Beach, FL 33139"
-        self.GetAddressesFromLocation()
-        self.Area = "Ocean Drive"
-
-        self.zip = "34786"
-        self.GetLocationsFromZip()
-        self.Location = "Windermere, FL"
-        self.Address = "11465 Park Ave, Windermere, FL 34786, United States"
-        self.GetAddressesFromLocation()
-        self.Area = "11465 Park Avenue"
+        #
+        # self.zip = "33139"
+        # self.GetLocationsFromZip()
+        # self.Location = "Miami Beach, FL"
+        # self.Address = "Ocean Dr, Miami Beach, FL 33139"
+        # self.GetAddressesFromLocation()
+        # self.Area = "Ocean Drive"
+        #
+        # self.zip = "34786"
+        # self.GetLocationsFromZip()
+        # self.Location = "Windermere, FL"
+        # self.Address = "11465 Park Ave, Windermere, FL 34786, United States"
+        # self.GetAddressesFromLocation()
+        # self.Area = "11465 Park Avenue"
 
         print("For ZIP {} you selected {} location with {} address at {} area".format(self.zip, self.Location,
                                                                                       self.Address, self.Area))
