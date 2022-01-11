@@ -144,7 +144,7 @@ class Instacart:
         try:
             opts = uc.ChromeOptions()
             proxy = random.choice(PROXIES)
-            opts.add_argument(f'--proxy-server=socks5://{proxy}')
+            # opts.add_argument(f'--proxy-server=socks5://{proxy}')
             self.driver = uc.Chrome(
                 browser_executable_path="/usr/bin/google-chrome",
                 options=opts,
@@ -246,6 +246,7 @@ class Instacart:
 
     def IsHasMore(self):
         try:
+            time.sleep(1)
             self.driver.find_element("xpath", "//button[contains(@class,'LoadMore')]")
             return True
         except:
@@ -263,12 +264,22 @@ class Instacart:
 
     def LoadMore(self):
         more = self.IsHasMore()
+        if not more:
+            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
         while more and self.SCROLL_LIMIT:
             self.SCROLL_LIMIT = self.SCROLL_LIMIT - 1
             try:
+                time.sleep(1)
+                self.driver.find_element_by_css_selector("body").send_keys(Keys.PAGE_DOWN)
+                time.sleep(1)
                 self.driver.find_element("xpath", "//button[contains(@class,'LoadMore')]").click()
                 self.IsLoading()
                 more = self.IsHasMore()
+                if not more:
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(1)
+
             except StaleElementReferenceException as e:
                 print("Loading..")
                 more = True
@@ -279,28 +290,34 @@ class Instacart:
                 self.driver.find_element_by_css_selector("body").send_keys(Keys.PAGE_UP)
                 self.driver.find_element_by_css_selector("body").send_keys(Keys.PAGE_DOWN)
                 more = self.IsHasMore()
+                if not more:
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(1)
 
             except NoSuchElementException:
                 self.driver.find_element_by_css_selector("body").send_keys(Keys.PAGE_UP)
                 self.driver.find_element_by_css_selector("body").send_keys(Keys.PAGE_DOWN)
                 more = self.IsHasMore()
+                if not more:
+                    self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+                time.sleep(1)
+
         else:
             print("Loaded all products")
 
     def FetchProducts(self):
         try:
             products = self.driver.find_elements("xpath", "//div[contains(@class,'ItemCardHoverProvider')]")
-            # print("Products: ",len(products), "Links: ", len(self.links))
-            for i, product in enumerate(products):
-                link = self.driver.find_elements("xpath", "//div[contains(@class,'ItemCardHoverProvider')]/div/div/a")
-                if len(link)>=i:
-                    link = link[i].get_attribute("href")
-                else:
-                    continue
+            link_list = self.driver.find_elements("xpath", "//div[contains(@class,'ItemCardHoverProvider')]/div/div/a")
+            print(f"Products: {len(products)} & Links: {len(link_list)}")
+            for each in link_list:
+                    link = each.get_attribute("href")
+                    if link is not None:
+                        self.links.append(link)
 
-                self.links.append(link)
                 # print("#{} - #{}".format(i + 1, len(products)))
             # print("We got #{} product(s). start fetching data".format(len(self.links)))
+
             self.driver.close()
             self.GoThroughEveryProduct()
             self.driver.quit()
@@ -362,7 +379,8 @@ class Instacart:
                 self.products.append(product_object)
 
                 # if file does not exist write header
-                obj = pd.DataFrame.from_dict(product_object)
+                obj = pd.DataFrame.from_dict([product_object])
+                # print(obj[["product_id","title"]])
                 if not os.path.isfile(self.filename):
                     obj.to_csv("backup/"+self.filename, index=False)
                 else:  # else it exists so append without writing the header
